@@ -1,0 +1,164 @@
+Exercises
+
+1. What data types do each of these values represent?
+
+   1. "A Clockwork Orange"
+   2. 42
+   3. 09/02/1945
+   4. 98.7
+   5. $15.99
+
+  A: 
+     1. string
+     2. integer
+     3. date
+     4. float
+     5. currency
+
+2. Explain when a database would be used. 
+   Explain when a text file would be used.
+
+   A: We would use a database when we need a way to 
+      store data that makes it easy to find specific 
+      data, that can handle more than one application 
+      accessing the data, and it persists beyond the end
+      of a particular application process.
+
+      We would use a text file when we need to store 
+      data outside of an application and we don't need
+      any of the extra conditions fulfilled by 
+      databases.
+
+3. Describe one difference between SQL and other 
+   programming languages.
+
+   A: One difference between SQL and other programming
+      languages is that the equality symbol is used in 
+      the same as with numbers. The equality is exact. 
+      For instance, 'Mike' = 'mike' would not be the 
+      case in SQL.
+
+4. In your own words, explain how the pieces of a 
+   database system fit together at a high level.
+
+   A: A database system starts with data. If you do not
+      have data, then you cannot have a meaningful 
+      database. Said data is laid out in a table.
+      A table is constructed of rows and columns. 
+      The columns are labeled based upon what value
+      is stored in the column. Every cell of a 
+      particular column will have a value that is of the 
+      same type in relation to the other cells in the 
+      column. The rows will display an individual 
+      instance of meaningful data representation. 
+
+5. Explain the meaning of table, row, column, and value.
+
+   A: 
+
+      Table: A data structue, made of rows and columns,
+             that stores and displays data.
+
+      Row: An individual, implicitly structured data 
+           item in a table.
+
+      Column: A set of data values, each value of a 
+              common type, one value for each row in 
+              the table.
+
+      Value: An actual piece of data. 
+
+6. List three data types that can be used in a table.
+
+   A: Three data types that can be used in a table are
+      text, numbers, and date.
+
+7. Given this payments table, provide an English 
+   description of the following queries and include 
+   their results:
+
+   SELECT date, amount
+   FROM payments;
+
+   SELECT amount
+   FROM payments
+   WHERE amount > 500;
+
+   SELECT *
+   FROM payments
+   WHERE payee = 'Mega Foods';
+
+   A: 
+
+      Note: All double quotes are meant to be used in 
+            relation to English and are not meant to 
+            denote strings particularly as this 
+            specific exercise is about SQL which 
+            denotes strings using single quotes.
+
+      SELECT date, amount
+      FROM payments;
+
+      An English description would be SELECT two
+      columns, date and amount, FROM the payments table
+      The result would be just these two columns and 
+      their respective data being displayed next to each
+      other
+
+      SELECT amount
+      FROM payments
+      WHERE amount > 500;
+
+      An English description would be SELECT one column,
+      amount, FROM the payments table WHERE the amount
+      is greater than 500. The result would be a column
+      with the title "amount" and only one value, 
+      1500.00, since that is the only value in the 
+      column that satifies the query's condition.
+
+      SELECT *
+      FROM payments
+      WHERE payee = 'Mega Foods';
+
+      An English description would be SELECT all the 
+      columns for the set of rows FROM payments WHERE 
+      payee is equal to "Mega Foods". The result would
+      be the single row from the table showing the
+      "date" column with the single entry "2016-05-15"
+      next to the "payee" column with the single entry
+      "Mega Foods" next to the "amount" column with the 
+      single entry "124.93" next to the "memo" column 
+      with the single entry "Groceries" 
+      
+
+8. Given this users table, write SQL queries using the 
+   following criteria and include the output:
+
+   * The email and sign-up date for the user named 
+     DeAndre Data.
+   * The user ID for the user with email
+     'aleesia.algorithm@uw.edu'.
+   * All the columns for the user ID equal to 4.
+
+   A: 
+
+      * The email and sign-up date for the user named 
+        DeAndre Data.
+
+        SELECT email, signup
+        FROM users
+        WHERE name = 'DeAndre Data';
+
+      * The user ID for the user with email
+        'aleesia.algorithm@uw.edu'. 
+
+        SELECT userid
+        FROM users
+        WHERE email = 'aleesia.algorithm@uw.edu';  
+
+      * All the columns for the user ID equal to 4.
+
+        SELECT * 
+        FROM users
+        WHERE userid = 4;   
+
