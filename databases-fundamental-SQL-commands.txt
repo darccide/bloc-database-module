@@ -1,0 +1,300 @@
+Exercises
+
+1. List the commands for adding, updating, and deleting data.
+
+   A: The commands for adding or deleting data are 'INSERT INTO',
+      'UPDATE', 'DELETE', and if the table already exists 
+      'ALTER TABLE' can be used to add, update, or delete columns. 'DROP
+      TABLE' can be used to delete an existing table from a database.
+
+2. Explain the structure for each type of command.
+
+   A: The structures for each type of command:
+
+      INSERT INTO
+
+      INSERT INTO table_name (name1, name2,...)
+      VALUES
+      (value1, value2, ...),
+      (value12, value22, ...),
+      (value13, value23, ...),
+      (value14, value24, ...);
+
+      The 'INSERT INTO' statement fills a table with values.
+      Every 'name' in the parentheses is the set of columns that the 
+      values are connected to. This 'INSERT INTO' statement would 
+      create a table where based of the number of names in parentheses,
+      we would have that many columns and the grouped values within 
+      parentheses would indicate that many rows. 
+
+      UPDATE
+
+      UPDATE table_name SET name(s)=value(s)  WHERE another_name(s)=another_value(s);
+
+      The 'UPDATE' statement takes in one or more clauses between 
+      'SET' and 'WHERE' and update the value(s) indicated by what is right
+      of the 'WHERE'. There can be multiple statements put to the right of
+      the 'WHERE' statement as well.
+
+      DELETE
+
+      DELETE FROM table_name WHERE name(s)=value(s);
+
+      The 'DELETE' statement takes in the table name after 'FROM' and 
+      deletes the row(s) indicated by the name(s) and value(s) after the
+      'WHERE'. Multiple 'WHERE' clauses can be used.
+
+      ALTER TABLE
+
+      ALTER TABLE table_name ADD COLUMN new_column_name data_type;
+
+      or 
+   
+      ALTER TABLE table_name ADD COLUMN new_column_name data_type SET DEFAULT value;
+
+      The 'ALTER TABLE' statement takes in the name of the table to be altered.
+      After the 'ADD COLUMN' the new column name is entered along with the data type
+      each value should be (like text or decimal for examples). After the
+      'SET DEFAULT' a default value can be added into each column entry.
+
+      ALTER TABLE table_name DROP COLUMN column_name;
+
+      Here the 'ALTER TABLE' statement takes in the name of the table to be altered.
+      The column that is specified is "dropped" or deleted from the table.
+
+      DROP TABLE
+
+      DROP TABLE table_name;
+
+      The 'DROP TABLE' statement deletes the table with the corresponding
+      table name.
+
+3. What are some of the data types that can be used in tables?
+   Give a real-world example of each type.
+
+   A: There are forty data types that can be used in tables.
+      Here I will indicated four types. I will explain the type and explicate 
+      a real-world example of each type I indicate. A "boolean" value is 
+      one data type that can exist in a table. It's only entries are 'true'
+      and 'false'. An example of this is a database at a shipping firm that 
+      indicates whether a particular item has been shipped. If the item is 
+      shipped the value would be 'true' and if the item has not been shipped
+      the value would be 'false'. Next value to discuss would be "date". This 
+      is a calendar date with the format year/month/day. An example of this 
+      can be again be at the shipping firm mentioned in the last example. If 
+      an item has been shipped the date it was shipped can be indicated 
+      otherwise a default value can be assigned. Another type is "integer" which
+      which can have a positive or negative value and is a whole number.
+      A real world example of this can be how many of a particular type of 
+      pastry a bakery has made on a particular day. Usually when pastries are
+      baked they are not produced in any amounts other than integers. For instance,
+      'five dozen croissants' and 'A gross of apple turnovers' are very likely to 
+      be hear in a bakery. The last data type I will disscuss is "text". This 
+      data type is a character string that can be of varying length. A real-world
+      example of a string entry would be the name of each worker at a company in 
+      a database that monitors attendance. The name of each worker would be in the 
+      database as a character string.
+      
+
+4. Decide how to create a new table to hold a list of people
+   invited to a wedding dinner. The table needs to have 
+   first and last names, whether they sent in their RSVP, the 
+   number of guests they are bringing, and the number of meals 
+   (1 for adults and 1/2 for children).
+
+   * Which data type would you use to store each of the 
+     following pieces of information?
+     * First and last name.
+     * Whether they sent in their RSVP.
+     * Number of guests.
+     * Number of meals.
+   * Write a command that creates the table to track the 
+     wedding dinner.
+   * Write a command that adds a column to track whether 
+     the guest sent a thank you card.
+   * You have decided to move the data about the meals to another
+     table, so write a command to remove the column storing the 
+     number meals from the wedding table. 
+   * The guests will need a place to sit at the reception, so 
+     write a command that adds a column for table number.
+   * The wedding is over and we do not need to keep this 
+     information, so write a command that deletes the table 
+     numbers from the database.
+
+   A: I will answer each bullet point in order.
+
+      * Which data type would you use to store each of the 
+        following pieces of information?
+        * First and last name.
+        * Whether they sent in their RSVP.
+        * Number of guests.
+        * Number of meals.
+
+        * First name and last name would be stored as "text".
+        * Whether they sent in their RSVP I would store as "boolean".
+        * Number of guests I would store as "integer".
+        * Number of meals I would store as "numeric".
+
+      * Write a command that creates the table to track the 
+        wedding dinner.
+
+        CREATE TABLE invited (
+            FirstName text,
+            LastName text,
+            RSVP boolean,
+            Guests integer,
+            Meals numeric(5, 1)
+        ); 
+
+      * Write a command that adds a column to track whether 
+        the guest sent a thank you card.
+
+        ALTER TABLE invited ADD COLUMN ThankYouCard boolean;
+
+      * You have decided to move the data about the meals to another
+        table, so write a command to remove the column storing the 
+        number meals from the wedding table. 
+
+        ALTER TABLE invited DROP COLUMN Meals;
+
+      * The guests will need a place to sit at the reception, so 
+        write a command that adds a column for table number.
+
+        ALTER TABLE invited ADD COLUMN TableNumber integer;
+
+      * The wedding is over and we do not need to keep this 
+        information, so write a command that deletes the table 
+        numbers from the database.
+
+        ALTER TABLE invited DROP COLUMN TableNumber;
+
+5. Write a command to create a new table to hold the books in a 
+   library with the columns ISBN, title, author, genre, publishing 
+   date, number of copies, and available copies.
+
+   * Find three books and add their information to the table.
+   * Someone has just checked out one of the books. Change the number
+     of available copies to 1 fewer.
+   * Now one of the books has been added to the banned books list. 
+     Remove it from the table.
+
+   A: I will answer each bullet point in order after creating the table.
+
+      CREATE TABLE books (
+          ISBN integer,
+          Title text,
+          Author text,
+          Genre text,
+          PublishingDate date,
+          NumberOfCopies integer,
+          AvailableCopies integer
+      );
+
+      * Find three books and add their information to the table.
+        
+        INSERT INTO books (ISBN, Title, Author, Genre, PublishingDate, NumberOfCopies, AvailableCopies)
+        VALUES
+        (9787543321724, 'The Catcher in the Rye', 'J.D. Salinger', 'coming-of-age' , 1951-07-16, 3, 3),
+        (9780679722649, 'The Maltese Falcon', 'Dashiell Hammett', 'mystery', 1930-09-23, 2, 2),
+        (9780441790340, 'Stranger in a Strange Land', 'Robert A. Heinlein', 'science-fiction', 1961-06-01, 4, 4);
+
+      * Someone has just checked out one of the books. Change the number
+        of available copies to 1 fewer.
+
+        UPDATE books SET AvailableCopies=3  WHERE ISBN=9780441790340;
+
+      * Now one of the books has been added to the banned books list. 
+        Remove it from the table.
+
+        DELETE FROM books WHERE ISBN=9787543321724;
+
+6. Write a command to make a new table to hold spacecrafts. Information
+   should include id, name, year launched, country of origin, a brief
+   description of the mission, orbiting body, if it is currently 
+   operating, and its approximate miles from Earth. In addition to the 
+   table creation, provide commands that perform the following 
+   operations:
+
+   * Add three non-Earth-orbiting satellites to the table.
+   * Remove one of the satellites from the table since it has just 
+     crashed into the planet.
+   * Edit another satellite because it is no longer operating and 
+     change the value to reflect that.
+
+   A: I will answer each bullet point in order after creating the table.
+
+      CREATE TABLE spacecrafts (
+          ID integer,
+          Name text,
+          LaunchYear integer,
+          Country text,
+          Description text,
+          OrbitingBody text,
+          Operating boolean,
+          MilesFromEarth integer
+      );
+
+      * Add three non-Earth-orbiting satellites to the table.
+
+        INSERT INTO spacecrafts (ID, Name, LaunchYear, Country, Description, OrbitingBody, Operating, MilesFromEarth)
+        VALUES
+        (8975, 'Sand Rover', 2008, 'Russia' , 'particle collection', 'Mars', true, 358000000),
+        (1234, 'Snap Ship', 2011, 'USA', 'take surface pictures', 'Saturn', true, 746000000),
+        (6730, 'The Humble Scope', 2013, 'Brazil', 'examine Venus surface', 'Venus', true,  25000000);
+
+      * Remove one of the satellites from the table since it has just 
+        crashed into the planet.
+
+        DELETE FROM spacecrafts WHERE ID=6730;
+
+      * Edit another satellite because it is no longer operating and 
+        change the value to reflect that.
+
+        UPDATE spacecrafts SET Operate=false WHERE ID=8975;
+
+7. Write a command to create a new table to hold the emails in your inbox.
+   This table should include an id, the subject line, the sender, any 
+   additional recipients, the body of the email, the timestamp, whether or
+   not you have read the email, and the id of the email chain it's in. 
+   Also provide commands that perform the following operations:
+
+   * Add three new emails to the inbox.
+   * You deleted one of the emails, so write a command to remove the row 
+     from the inbox table.
+   * You started reading an email but just heard a crash in another room. 
+     Mark the email as unread before investigating the crash, so you can 
+     come back and read it later.
+
+   A: I will answer each bullet point in order after creating the table.
+
+      CREATE TABLE emails (
+          ID integer,
+          SubjectLine text,
+          Sender text,
+          AdditionalRecipients text,
+          Body text,
+          TimeStamp timestamp,
+          Read boolean,
+          EmailChainID integer
+      );
+
+      * Add three new emails to the inbox.
+
+        INSERT INTO emails (ID, SubjectLine, Sender, AdditionalRecipients, Body, TimeStamp, Read, EmailChainID)
+        VALUES
+        (1122, 'Hello', 'jane.doe@gmail.com', 'none' , 'blah blah blah', 2008-11-11 13:23:44, true, 42),
+        (1123, 'How are you', 'my.name@hotmail.com', 'none', 'you get the idea', 2008-11-12 15:45:21, true, 43),
+        (1124, 'It is me', 'john.doe.jersey@yahoo.com', 'none', 'at least I hope so', 2008-11-13 17:56:59, true,  44);
+
+      * You deleted one of the emails, so write a command to remove the row 
+        from the inbox table.
+
+        DELETE FROM emails WHERE ID=1122;
+
+      * You started reading an email but just heard a crash in another room. 
+        Mark the email as unread before investigating the crash, so you can 
+        come back and read it later.
+
+        UPDATE emails SET Read=false WHERE ID=1124;
+
+
