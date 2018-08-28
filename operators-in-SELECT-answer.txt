@@ -1,0 +1,215 @@
+Exercises
+
+1. Write out a generic SELECT statement.
+
+   A: SELECT <column1, column2,... *>
+      FROM <table1, table2,...>
+      <optional: WHERE <condition>>
+
+2. Create a fun way to remember the order
+   of operations in a SELECT statement, 
+   such as a mnemonic.
+
+   A: Start Frogs Walking!
+
+      (Select, From, Where) 
+
+3. Given this dogs table, write queries to 
+   select the following pieces of data: 
+
+   * Display the name, gender, and age of all
+     dogs that are part Labrador.
+   * Display the ids of all dogs that are 
+     under 1 year old.
+   * Display the name and age of all dogs that
+     are female and over 35lbs.
+   * Display all of the information about all 
+     dogs that are not Shepherd mixes.
+   * Display the id, age, weight, and breed of
+     all dogs that are either over 60lbs or 
+     Great Danes.
+
+   A: 
+
+      * Display the name, gender, and age of all
+        dogs that are part Labrador.
+
+      * SELECT name, gender, age
+        FROM dogs
+        WHERE breed LIKE '%Labrador%';
+
+      * Display the ids of all dogs that are 
+        under 1 year old.
+
+      * SELECT id
+        FROM dogs
+        WHERE age < 1;
+
+      * Display the name and age of all dogs that
+        are female and over 35lbs.
+
+      * SELECT name, age
+        FROM dogs
+        WHERE gender LIKE 'F%'
+        AND weight > 35;
+
+      * Display all of the information about all 
+        dogs that are not Shepherd mixes.
+
+      * SELECT *
+        FROM dogs
+        WHERE breed != '%shepherd%';
+
+      * Display the id, age, weight, and breed of
+        all dogs that are either over 60lbs or 
+        Great Danes.
+
+      * SELECT id, age, weight, breed
+        FROM dogs
+        WHERE weight > 60 
+        OR breed = '%great danes%';
+
+
+4. Given this cats table, what records are 
+   returned from these queries?
+
+   * SELECT name, adoption_date FROM cats;
+   * SELECT name, age FROM cats;
+
+   A: 
+
+      * SELECT name, adoption_date FROM cats;
+      
+      * | name     | adoption_date |
+        |----------|---------------|
+        | Mushi    | 2016-03-22    |
+        | Seashell | NUL           |
+        | Azul     | 2016-04-17    |
+        | Victoire | 2016-09-01    |
+        | Nala     | NULL          |
+
+      * SELECT name, age FROM cats;
+
+      * | name     | age |
+        |----------|-----|
+        | Mushi    | 1   |
+        | Seashell | 7   |
+        | Azul     | 3   |
+        | Victoire | 7   |
+        | Nala     | 1   |
+
+5. From the cats table, write queries to select
+   the following pieces of data.
+   * Display all the information about all of 
+     the available cats.
+   * Display the name and sex of all cats who 
+     are 7 years old.
+   * Find all of the names of the cats, so you 
+     don't choose duplicate names for new cats.
+
+   A: 
+
+      * Display all the information about all of 
+        the available cats.
+
+      * SELECT * 
+        FROM cats;
+
+      * Display the name and sex of all cats who 
+        are 7 years old.
+
+      * SELECT name, gender
+        FROM cats
+        WHERE age = 7;
+
+      * Find all of the names of the cats, so you
+        don't choose duplicate names for new cats.
+
+      * SELECT name
+        FROM cats;
+
+6. List each comparison operator and explain 
+   when you would use it. Include a real world
+   example for each.
+  
+   A: The comparison operators:
+ 
+      * <
+      * >
+      * <=
+      * >=
+      * !=
+      * =
+      * LIKE
+
+      I will bullet each real world example in a 
+      corresponding order to my listing of each
+      operator.
+
+      * A real world example of this would be finding
+        all the students in a certain grade who are 
+        younger than a certain age. This could be highly
+        useful in high schools for things like student
+        parking or if a student gets into a physical 
+        altercation with a minor and said student is 
+        no longer a minor.
+
+      * A real world example of this would be if you were 
+        trying to catalog pension applicants and your 
+        company has an age restriction on their pension 
+        plan. Then you would want to know if someone was 
+        born after a certain year in order to determine if 
+        they qualify to withdraw.
+
+      * A real world example of this would be if you wanted
+        to create a notice for inventory replenishment at 
+        a warehouse. Then you would want to know when you only 
+        had a particular amount of a particular item.
+
+      * A real world example of this can be highlighted by the
+        idea, which comes from the real world, of the baker's 
+        dozen. Since a dozen (12) would be required for something
+        like a box of donuts, the bakery would want to make sure 
+        they are baking 12 or more donuts at a time.
+
+      * A real world example of this would be with students being 
+        vaccinated for a particular virus at school. Say the school
+        wanted non vaccinated students to get vaccinated they would
+        want to search through a database by specifying they want to
+        know the names of all the students who are not vaccinated.
+
+      * A real world example of this would be the correcting of a
+        wrong shipping order. If a person received the wrong 
+        merchandise and called the company they would want to be
+        able to check through their shipments either based off of
+        a matching id number or even check all the shipment that have
+        some of the same merchandise.
+
+      * A real world example of using like would be if you were 
+        doing a return at a store. The store clerk would want to
+        be able to look up the returned item in the store's 
+        inventory database even if they didn't know the exact name
+        of the item, but knew part of the name.
+
+7. From the cats table, what data is returned 
+   from these queries?
+   * SELECT name FROM cats WHERE gender = 'F';
+   * SELECT name FROM cats WHERE age <> 3;
+   * SELECT ID FROM cats WHERE name != 'Mushi 
+     AND gender = 'M';
+
+   A: 
+
+      * SELECT name FROM cats WHERE gender = 'F';
+    
+      * The names of all the female cats will be returned.
+
+      * SELECT name FROM cats WHERE age <> 3;
+ 
+      * The names of all the cats who are not 3 years old.
+
+      * SELECT ID FROM cats WHERE name != 'Mushi 
+        AND gender = 'M'; 
+
+      * The ID of all the cats who are not named "Mushi" and are male.     
+
